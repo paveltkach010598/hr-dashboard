@@ -80,6 +80,24 @@
       "status": "active",
       "salary": 23123,
       "startDate": "4422-12-12"
+    },
+    {
+      "id": "ddd3",
+      "name": "123",
+      "department": "Backend",
+      "position": "123",
+      "status": "active",
+      "salary": 123,
+      "startDate": "12312-03-12"
+    },
+    {
+      "id": "dd20",
+      "name": "12321",
+      "department": "Backend",
+      "position": "Разработчик",
+      "status": "active",
+      "salary": 222202,
+      "startDate": "2222-02-21"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"

@@ -8,6 +8,7 @@ import { useVirtualizer } from '@tanstack/react-virtual'
 import { useGetEmployeesQuery, useDeleteEmployeeMutation } from '../../api/employeesApi'
 import type { Employee } from '../../types/employee'
 import EmployeeForm from './EmployeeForm'
+import EditIcon from '@mui/icons-material/Edit'
 
 const departments = ['Все', 'Frontend', 'Backend', 'HR', 'QA', 'DevOps']
 const COLUMNS = ['Имя', 'Отдел', 'Должность', 'Статус', 'Зарплата', 'Дата найма', 'Действия']
@@ -17,6 +18,22 @@ function EmployeesPage() {
     const [deleteEmployee] = useDeleteEmployeeMutation()
     const [formOpen, setFormOpen] = useState(false)
     const [selectedDepartment, setSelectedDepartment] = useState('Все')
+    const [editEmployee, setEditEmployee] = useState<Employee | undefined>(undefined)
+
+    const handleEdit = useCallback((employee: Employee) => {
+        setEditEmployee(employee)
+        setFormOpen(true)
+    }, [])
+
+    const handleAdd = useCallback(() => {
+        setEditEmployee(undefined)
+        setFormOpen(true)
+    }, [])
+
+    const handleClose = useCallback(() => {
+        setEditEmployee(undefined)
+        setFormOpen(false)
+    }, [])
 
     const parentRef = useRef<HTMLDivElement>(null)
 
@@ -48,7 +65,7 @@ function EmployeesPage() {
                     <Typography variant="h5">Сотрудники</Typography>
                     <Chip label={filteredEmployees.length} size="small" />
                 </Box>
-                <Button variant="contained" onClick={() => setFormOpen(true)}>
+                <Button variant="contained" onClick={handleAdd}>
                     + Добавить сотрудника
                 </Button>
             </Box>
@@ -108,6 +125,9 @@ function EmployeesPage() {
                                     <Box sx={{ flex: 1, px: 2 }}>{employee.salary.toLocaleString()} ₽</Box>
                                     <Box sx={{ flex: 1, px: 2 }}>{employee.startDate}</Box>
                                     <Box sx={{ flex: 1, px: 2 }}>
+                                        <IconButton color="primary" onClick={() => handleEdit(employee)}>
+                                            <EditIcon />
+                                        </IconButton>
                                         <IconButton color="error" onClick={() => handleDelete(employee.id)}>
                                             <DeleteIcon />
                                         </IconButton>
@@ -119,7 +139,7 @@ function EmployeesPage() {
                 </Box>
             </Paper>
 
-            <EmployeeForm open={formOpen} onClose={() => setFormOpen(false)} />
+            <EmployeeForm open={formOpen} onClose={handleClose} employee={editEmployee} />
         </Box>
     )
 }
