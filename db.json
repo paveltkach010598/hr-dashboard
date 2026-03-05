@@ -71,6 +71,15 @@
       "status": "active",
       "salary": 500000,
       "startDate": "2026-03-05"
+    },
+    {
+      "id": "edc0",
+      "name": "1",
+      "department": "HR",
+      "position": "123",
+      "status": "active",
+      "salary": 23123,
+      "startDate": "4422-12-12"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"
