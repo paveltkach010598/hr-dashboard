@@ -9,6 +9,8 @@ import { useGetEmployeesQuery, useDeleteEmployeeMutation } from '../../api/emplo
 import type { Employee } from '../../types/employee'
 import EmployeeForm from './EmployeeForm'
 import EditIcon from '@mui/icons-material/Edit'
+import { filterEmployees } from '../../utils/filterEmployees'
+
 
 const departments = ['Все', 'Frontend', 'Backend', 'HR', 'QA', 'DevOps']
 const COLUMNS = ['Имя', 'Отдел', 'Должность', 'Статус', 'Зарплата', 'Дата найма', 'Действия']
@@ -38,8 +40,7 @@ function EmployeesPage() {
     const parentRef = useRef<HTMLDivElement>(null)
 
     const filteredEmployees = useMemo(() => {
-        if (selectedDepartment === 'Все') return employees ?? []
-        return (employees ?? []).filter((e) => e.department === selectedDepartment)
+        return filterEmployees(employees ?? [], selectedDepartment)
     }, [employees, selectedDepartment])
 
     const rowVirtualizer = useVirtualizer({
