@@ -10,7 +10,7 @@ function App() {
                 <AppBar position="static">
                     <Toolbar>
                         <Typography variant="h6" sx={{ flexGrow: 1 }}>
-                            HR Dashboard
+                            HR Dashboard 2.0
                         </Typography>
                         <Button color="inherit" component={NavLink} to="/">
                             Сотрудники
