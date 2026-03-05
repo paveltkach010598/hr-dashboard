@@ -64,40 +64,31 @@
       "startDate": "2020-02-28"
     },
     {
-      "id": "b1de",
-      "name": "Павел",
+      "name": "Павел11",
       "department": "Frontend",
       "position": "Разработчик",
       "status": "active",
       "salary": 500000,
-      "startDate": "2026-03-05"
+      "startDate": "2026-03-05",
+      "id": "b1de"
     },
     {
-      "id": "edc0",
-      "name": "1",
-      "department": "HR",
-      "position": "123",
-      "status": "active",
-      "salary": 23123,
-      "startDate": "4422-12-12"
-    },
-    {
-      "id": "ddd3",
-      "name": "123",
-      "department": "Backend",
-      "position": "123",
-      "status": "active",
-      "salary": 123,
-      "startDate": "12312-03-12"
-    },
-    {
-      "id": "dd20",
-      "name": "12321",
-      "department": "Backend",
+      "id": "e098",
+      "name": "Антон",
+      "department": "QA",
       "position": "Разработчик",
       "status": "active",
-      "salary": 222202,
-      "startDate": "2222-02-21"
+      "salary": 112012,
+      "startDate": "2026-02-22"
+    },
+    {
+      "id": "fed9",
+      "name": "Павел Ткач",
+      "department": "Frontend",
+      "position": "Разработчик",
+      "status": "active",
+      "salary": 12321,
+      "startDate": "1998-02-22"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"

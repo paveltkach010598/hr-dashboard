@@ -135,7 +135,18 @@ function EmployeeForm({ open, onClose, employee }: Props) {
                     <Controller
                         name="startDate"
                         control={control}
-                        rules={{ required: 'Введите дату' }}
+                        rules={{
+                            required: 'Введите дату',
+                            validate: (value) => {
+                                const date = new Date(value)
+                                const now = new Date()
+                                const minDate = new Date('1990-01-01')
+                                if (isNaN(date.getTime())) return 'Некорректная дата'
+                                if (date > now) return 'Дата не может быть в будущем'
+                                if (date < minDate) return 'Дата не может быть раньше 1990 года'
+                                return true
+                            }
+                        }}
                         render={({ field }) => (
                             <TextField
                                 {...field}
